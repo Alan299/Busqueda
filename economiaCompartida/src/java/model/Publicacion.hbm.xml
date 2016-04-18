@@ -44,9 +44,5 @@
         </set>
     </class>
     
-    <sql-query name="Buscar">
-	<return alias="Publicacion" class="model.Publicacion"/>
-	<![CDATA[select * from publicacion  where  publicacion.descripcion LIKE '%M%']]>
-    </sql-query>
     
 </hibernate-mapping>

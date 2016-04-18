@@ -15,8 +15,8 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
 
-import logic.*;
-import model.*;
+import logic.ConsultarC;
+import model.Publicacion;
 /**
  *
  * @author Alan
@@ -24,7 +24,6 @@ import model.*;
 @ManagedBean
 @RequestScoped
 public class ConsultarBean {
-    //private int elementoActual;
     private String clave;
     private ConsultarC termino;
     private ArrayList<Publicacion> resultados;
@@ -34,7 +33,7 @@ public class ConsultarBean {
     private final HttpServletRequest httpServletRequest; // Obtiene información de todas las peticiones de usuario.
     private final FacesContext faceContext; // Obtiene información de la aplicación
     private FacesMessage message; // Permite el envio de mensajes entre el bean y la vista.
-    //private ConsultarC helper;
+  
    
     public ConsultarBean(){
        
@@ -48,8 +47,9 @@ public class ConsultarBean {
     public String buscar(){
        termino = new ConsultarC();
        this.resultados = new ArrayList<>();
+       System.out.println("clave: " + clave);
        this.resultados = (ArrayList<Publicacion>) termino.buscar(clave);
-       //System.out.println("Tamaño de la lista de re: " + this.resultados.size());
+       
        return "ConsultarIH";
     }
     public ConsultarC getTermino(){

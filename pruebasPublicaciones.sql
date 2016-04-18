@@ -1,3 +1,4 @@
+INSERT INTO usuario(idusuario,nombre,correo,contrasena,calificacion, esadmin) VALUES (1, 'usuario1', 'usuario@gmail.com', '12345', 0, FALSE);
 
 INSERT INTO publicacion (idPublicacion,idUsuario,idPrestatario,precio,estado,descripcion,fechaPublicacion,calificacion)
 VALUES (1, 1,NULL, 10.0,'Coahuila', 'Memoria Ram Corsair 4gb DDR4 2133MHZ', '2016/2/25',5);

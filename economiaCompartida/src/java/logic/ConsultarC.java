@@ -52,18 +52,19 @@ public class ConsultarC {
     
     
      public List<Publicacion> buscar(String clave ){
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
+         clave = clave.toLowerCase();
+         session = HibernateUtil.getSessionFactory().getCurrentSession();
          List<Publicacion> r = new ArrayList<>();
           try{
             Transaction tx = session.beginTransaction();
-            Query q = session.createQuery("select descripcion from publicacion where"
-            + "publicacion.descripcion like :clave ;");
-            q.setParameter("clave", "%"+clave+"%");
+             Query q = session.createSQLQuery("select * from publicacion where "
+            + "LOWER(publicacion.descripcion) like :clave ; ").addEntity(Publicacion.class).setString("clave", "%" + clave + "%");
+
             
             resultados = (ArrayList<Publicacion>) q.list();
             session.getTransaction().commit();
-            //this.ordenar();
-            System.out.println("Tamano de la lista de resultados: " + this.resultados.size() );
+            this.ordenar();
+            
            
         }catch (Exception e) {
             e.printStackTrace();
