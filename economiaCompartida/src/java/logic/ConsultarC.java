@@ -41,6 +41,7 @@ public class ConsultarC {
     public static String obtenerPalabras(String cadena){
         if(cadena.length()<=0)
             return cadena;
+       
         cadena = cadena.toLowerCase(); //Transforma la cadena a minúsculas.
         String [] palabras  = cadena.split(" ");
         String resultado = ".*(";
@@ -65,7 +66,7 @@ public class ConsultarC {
          
          clave = obtenerPalabras(clave);
          session = HibernateUtil.getSessionFactory().getCurrentSession();
-         List<Publicacion> r = new ArrayList<>();
+        
           try{
             Transaction tx = session.beginTransaction();
              Query q = session.createSQLQuery("select * from publicacion where "
@@ -78,7 +79,7 @@ public class ConsultarC {
             
            
         }catch (Exception e) {
-            e.printStackTrace();
+            
             session.getTransaction().rollback();
         }
          return resultados;
@@ -88,6 +89,7 @@ public class ConsultarC {
     public void ordenar(){
         
         Collections.sort(this.resultados);
+        Collections.reverse(this.resultados);
         
     }
    

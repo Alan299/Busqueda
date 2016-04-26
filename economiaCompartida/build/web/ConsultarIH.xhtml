@@ -26,13 +26,34 @@ and open the template in the editor.
                     
 
                         <h:dataTable value="#{consultarBean.resultados}" var="resultado">
-                          
-                            <h:column> 
-                            <h:commandLink action="ConsultarPIH.xhtml">
-                                      <h:graphicImage value="/Images/intel-6thgen.jpg" height="50" width="350" />
-                            </h:commandLink> 
-                            </h:column>     
-                          
+                           
+                            <h:column>
+                                <c:choose>
+                                    <c:when test="#{resultado.galerias.size()!=0}">
+                                        <c:choose>
+                                            <c:when test="#{resultado.galerias.iterator().hasNext()}">
+                                         
+                                                <h:graphicImage value="#{resultado.galerias.iterator().next().foto()}" height="50" width="350" />
+                                    
+                                            </c:when>
+                                            <c:otherwise> 
+                                    
+                                                <h:graphicImage value="/Images/Computers_Computers_technology_042219_.jpg" height="50" width="350" />
+                                    
+                                            </c:otherwise>
+                                        </c:choose>    
+
+                                    </c:when>
+                                    <c:otherwise> 
+                                    
+                                          <h:graphicImage value="/Images/Computers_Computers_technology_042219_.jpg" height="50" width="350" />
+                                    
+                                    </c:otherwise>
+                            </c:choose>        
+                            </h:column>
+                            
+                            
+                            
                             <h:column>
                                 <f:facet name="header">Id</f:facet>
                                     #{resultado.idpublicacion}
@@ -55,7 +76,20 @@ and open the template in the editor.
 
                 </c:when>
                 <c:otherwise> 
-                    No se encontraron resultados.
+                    
+                    
+                    <style>
+                    p {
+                         color: green;
+                       }
+                    .paragraph1 {
+                         font-size: 35px;
+                                }
+                    
+                </style>
+
+                <p class="paragraph1">No se encontraron resultados.</p>
+               
                 </c:otherwise>    
             </c:choose>
 
