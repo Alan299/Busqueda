@@ -9,8 +9,10 @@ INSERT INTO publicacion (idUsuario,idPrestatario,precio,estado,descripcion,fecha
 VALUES (5,NULL, 10.0,'Coahuila', 'Intel Core i5-6500 - Procesador (Intel Core i5-6xxx, 3.2 GHz, LGA1151, 64 GB, DDR3L-SDRAM, DDR4-SDRAM, 2133,1333,1600,1866 MHz)', '2016/2/25',5);
 
 -- Inserts para tener usuarios en la base de datos
-INSERT INTO usuario (nombre, correo, contrasena, calificacion, esAdmin)
-VALUES ('kike','kike@mail.com',md5('kike'),0,true);
+
 
 INSERT INTO usuario(nombre,correo,contrasena,calificacion, esadmin)
-VALUES ('usuario1', 'usuario@gmail.com', '12345', 0, FALSE);
+VALUES ('usuario1', 'usuario@gmail.com', '12345', 0, TRUE);
+
+INSERT INTO usuario (nombre, correo, contrasena, calificacion, esAdmin)
+VALUES ('kike','kike@mail.com','12345',0,TRUE);
